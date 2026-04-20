@@ -44,8 +44,7 @@ export default function Web3LoginForm() {
 
       // 2. Start Supabase Web3 Auth Flow (Sign-In with Ethereum)
       const { data, error: authError } = await supabase.auth.signInWithWeb3({
-        address: address as `0x${string}`,
-        provider: 'ethereum',
+        chain: 'ethereum',
         options: {
           // You can specify redirection or other options here
         }
@@ -62,9 +61,9 @@ export default function Web3LoginForm() {
 
         // 4. Verify the signature with Supabase
         const { error: verifyError } = await supabase.auth.signInWithWeb3({
-          address: address as `0x${string}`,
-          provider: 'ethereum',
-          signature: signature,
+          chain: 'ethereum',
+          message: data.message,
+          signature: signature as `0x${string}`,
         });
 
         if (verifyError) throw verifyError;
