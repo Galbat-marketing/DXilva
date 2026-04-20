@@ -5,8 +5,6 @@ import { createBrowserClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Wallet, RefreshCw, AlertCircle } from "lucide-react";
 import styles from "@/app/(shop)/login/page.module.css";
-import { createPublicClient, http, createWalletClient, custom } from "viem";
-import { mainnet } from "viem/chains";
 
 declare global {
   interface Window {
@@ -31,43 +29,17 @@ export default function Web3LoginForm() {
 
     try {
       if (typeof window.ethereum === 'undefined') {
-        throw new Error("No se detectó ninguna billetera (MetaMask, etc.)");
+        throw new Error("No se detectó ninguna billetera (MetaMask, etc.). Por favor instálala para continuar.");
       }
 
-      // 1. Connect to Wallet
-      const walletClient = createWalletClient({
-        chain: mainnet,
-        transport: custom(window.ethereum!)
-      });
-
-      const [address] = await walletClient.requestAddresses();
-
-      // 2. Start Supabase Web3 Auth Flow (Sign-In with Ethereum)
+      // Supabase native one-step Web3 login
       const { data, error: authError } = await supabase.auth.signInWithWeb3({
         chain: 'ethereum',
-        options: {
-          // You can specify redirection or other options here
-        }
       });
 
       if (authError) throw authError;
 
-      // 3. Sign the message returned by Supabase
-      if (data.message) {
-        const signature = await walletClient.signMessage({
-          account: address as `0x${string}`,
-          message: data.message
-        });
-
-        // 4. Verify the signature with Supabase
-        const { error: verifyError } = await supabase.auth.signInWithWeb3({
-          chain: 'ethereum',
-          message: data.message,
-          signature: signature as `0x${string}`,
-        });
-
-        if (verifyError) throw verifyError;
-
+      if (data?.session) {
         router.push("/perfil");
         router.refresh();
       }
