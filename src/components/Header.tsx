@@ -10,8 +10,8 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Header({ initialUser, initialRole }: { initialUser?: any, initialRole?: string | null }) {
   const { itemCount } = useCart();
-  const [user, setUser] = useState<any>(initialUser);
-  const [role, setRole] = useState<string | null>(initialRole);
+  const [user, setUser] = useState<any>(initialUser ?? null);
+  const [role, setRole] = useState<string | null>(initialRole ?? null);
 
   const supabase = createBrowserClient();
 
