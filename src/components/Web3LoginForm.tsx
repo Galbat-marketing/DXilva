@@ -8,6 +8,12 @@ import styles from "@/app/(shop)/login/page.module.css";
 import { createPublicClient, http, createWalletClient, custom } from "viem";
 import { mainnet } from "viem/chains";
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 export default function Web3LoginForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
