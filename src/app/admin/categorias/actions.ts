@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
-export async function createCategory(formData: FormData) {
+export async function createCategory(prevState: any, formData: FormData) {
   const supabase = await createClient();
 
   const name = formData.get("name") as string;
