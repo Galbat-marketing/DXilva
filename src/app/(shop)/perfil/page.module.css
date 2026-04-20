@@ -1,0 +1,171 @@
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 8rem 5% 4rem;
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+  }
+}
+
+.sidebar {
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary);
+  color: var(--dx-black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-cinzel);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.role {
+  color: var(--dx-light-gray);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--border-radius-sm);
+  color: var(--dx-light-gray);
+  transition: all 0.2s ease;
+}
+
+.nav a:hover, .activeLink {
+  background-color: rgba(247, 187, 60, 0.1);
+  color: var(--primary) !important;
+}
+
+.logoutForm {
+  width: 100%;
+  margin-top: auto;
+}
+
+.logoutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid rgba(255, 77, 79, 0.3);
+  color: #ff4d4f;
+  padding: 0.8rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-montserrat);
+}
+
+.logoutBtn:hover {
+  background-color: rgba(255, 77, 79, 0.1);
+}
+
+.content {
+  padding-top: 1rem;
+}
+
+.title {
+  font-family: var(--font-cinzel);
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 2rem;
+}
+
+.infoCard {
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius-sm);
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: var(--dx-light-gray);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--glass-border);
+  margin: 1.5rem 0;
+}
+
+.helpText {
+  margin-top: 2rem;
+  color: var(--dx-gray);
+  font-size: 0.9rem;
+  font-style: italic;
+}

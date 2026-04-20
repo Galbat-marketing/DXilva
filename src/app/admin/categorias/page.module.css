@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-family: var(--font-cinzel);
+  font-size: 1.8rem;
+}
+
+.addBtn {
+  background-color: var(--primary);
+  color: var(--dx-black);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.categoryCard {
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: border-color 0.2s ease;
+}
+
+.categoryCard:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.categoryName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.categoryDesc {
+  font-size: 0.9rem;
+  color: var(--dx-light-gray);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.productCount {
+  font-size: 0.75rem;
+  color: var(--primary);
+  background-color: rgba(247, 187, 60, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.categoryActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: var(--dx-gray);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  color: var(--primary);
+}
+
+.deleteBtn:hover {
+  color: #ef4444;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem;
+  color: var(--dx-gray);
+  border: 1px dashed var(--glass-border);
+  border-radius: var(--border-radius-md);
+}

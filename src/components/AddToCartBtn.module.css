@@ -1,0 +1,96 @@
+.simpleBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+}
+
+.simpleBtn:hover:not(:disabled) {
+  background-color: var(--primary);
+  color: var(--dx-black);
+}
+
+.added {
+  background-color: #52c41a;
+  color: white;
+  border-color: #52c41a;
+  cursor: default;
+}
+
+.fullControl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+}
+
+.quantityControl button {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  width: 45px;
+  height: 100%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quantityControl button:hover {
+  background-color: var(--dx-gray);
+}
+
+.quantityControl span {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.bigBtn {
+  flex: 1;
+  min-width: 200px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background-color: var(--primary);
+  color: var(--dx-black);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: var(--font-montserrat);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bigBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(247, 187, 60, 0.4);
+}
+
+.addedBig {
+  background-color: #52c41a;
+  color: white;
+  box-shadow: 0 5px 20px rgba(82, 196, 26, 0.4);
+  cursor: default;
+}

@@ -1,0 +1,158 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-family: var(--font-cinzel);
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+
+.header p {
+  color: var(--dx-light-gray);
+  font-size: 0.9rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.searchWrapper {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dx-gray);
+}
+
+.searchInput {
+  width: 100%;
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1rem 0.75rem 2.8rem;
+  border-radius: var(--border-radius-sm);
+  color: var(--foreground);
+  font-family: var(--font-montserrat);
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+}
+
+.tableWrapper {
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 1.25rem 1rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--dx-light-gray);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.table td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+}
+
+.clientCell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  color: var(--dx-black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.clientInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.clientName {
+  font-weight: 600;
+}
+
+.clientId {
+  font-size: 0.75rem;
+  color: var(--dx-gray);
+  font-family: monospace;
+}
+
+.roleBadge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role_admin {
+  background-color: rgba(247, 187, 60, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(247, 187, 60, 0.3);
+}
+
+.role_customer {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--dx-light-gray);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.role_seller {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.date {
+  color: var(--dx-gray);
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem !important;
+  color: var(--dx-gray);
+}
