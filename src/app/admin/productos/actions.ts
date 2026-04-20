@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
-export async function createProduct(formData: FormData) {
+export async function createProduct(prevState: any, formData: FormData) {
   const supabase = await createClient();
 
   // Get current user for seller_id
@@ -46,7 +46,7 @@ export async function createProduct(formData: FormData) {
   redirect("/admin/productos");
 }
 
-export async function updateProduct(id: string, formData: FormData) {
+export async function updateProduct(id: string, prevState: any, formData: FormData) {
   const supabase = await createClient();
 
   // Get current user for validation (sellers can only update own, admins can update all)
