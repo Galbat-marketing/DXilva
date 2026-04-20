@@ -16,6 +16,8 @@ export default function Header({ initialUser, initialRole }: { initialUser?: any
   const supabase = createBrowserClient();
 
   useEffect(() => {
+    if (!supabase) return;
+
     const fetchProfile = async (userId: string) => {
       const { data } = await supabase
         .from("profiles")
