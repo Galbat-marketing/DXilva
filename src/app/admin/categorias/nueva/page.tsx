@@ -1,6 +1,6 @@
 import { createCategory } from "../actions";
 import Link from "next/link";
-import styles from "../productos/nuevo/page.module.css"; // Reuse form styles
+import styles from "../../productos/nuevo/page.module.css"; // Reuse form styles
 import { ArrowLeft, Save } from "lucide-react";
 
 export default function NewCategoryPage() {
