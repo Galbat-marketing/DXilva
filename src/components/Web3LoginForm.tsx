@@ -21,6 +21,11 @@ export default function Web3LoginForm() {
   const supabase = createBrowserClient();
 
   const handleWeb3Login = async () => {
+    if (!supabase) {
+      setError("Error de configuración: No se pudo inicializar el cliente de base de datos.");
+      return;
+    }
+
     setLoading(true);
     setError("");
 
