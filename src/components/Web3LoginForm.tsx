@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createBrowserClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Wallet, RefreshCw, AlertCircle } from "lucide-react";
-import styles from "@/app/login/page.module.css";
+import styles from "@/app/(shop)/login/page.module.css";
 import { createPublicClient, http, createWalletClient, custom } from "viem";
 import { mainnet } from "viem/chains";
 

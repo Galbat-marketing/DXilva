@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { requestOTP, verifyOTP } from "@/app/login/phone-actions";
+import { requestOTP, verifyOTP } from "@/app/(shop)/login/phone-actions";
 import { useRouter } from "next/navigation";
 import { Phone, Hash, RefreshCw } from "lucide-react";
-import styles from "@/app/login/page.module.css";
+import styles from "@/app/(shop)/login/page.module.css";
 
 export default function PhoneLoginForm() {
   const [phone, setPhone] = useState("");
