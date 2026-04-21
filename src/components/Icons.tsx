@@ -42,7 +42,10 @@ import {
   ShieldCheck,
   TrendingUp,
   AlertTriangle,
-  ArrowUpRight
+  ArrowUpRight,
+  Wallet,
+  Banknote,
+  CheckCircle2
 } from "lucide-react";
 
 export { 
@@ -87,5 +90,8 @@ export {
   ShieldCheck,
   TrendingUp,
   AlertTriangle,
-  ArrowUpRight
+  ArrowUpRight,
+  Wallet,
+  Banknote,
+  CheckCircle2
 };

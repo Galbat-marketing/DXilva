@@ -95,10 +95,10 @@ export default function CarritoPage() {
             <span className={styles.goldText}>${total.toFixed(2)}</span>
           </div>
           
-          <button className={styles.checkoutBtn} onClick={() => alert('Checkout flow coming soon! (Integración pendiente de Supabase)')}>
+          <Link href="/checkout" className={styles.checkoutBtn}>
             Proceder al Pago
             <ArrowRight size={20} />
-          </button>
+          </Link>
           
           <Link href="/tienda" className={styles.backLink}>
             Seguir comprando

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import styles from "./page.module.css";
 import { Search, Filter, Eye } from "lucide-react";
@@ -75,9 +76,9 @@ export default async function AdminOrdersPage() {
                     <OrderStatusBadge orderId={order.id} initialStatus={order.status} />
                   </td>
                   <td className={styles.actions}>
-                    <button className={styles.iconBtn} title="Ver detalles">
+                    <Link href={`/admin/ordenes/${order.id}`} className={styles.iconBtn} title="Ver detalles">
                       <Eye size={18} />
-                    </button>
+                    </Link>
                   </td>
                 </tr>
               ))
