@@ -6,7 +6,7 @@ import {
   AlertTriangle, 
   Clock, 
   ArrowUpRight 
-} from "lucide-react";
+} from "@/components/Icons";
 
 export const dynamic = "force-dynamic";
 

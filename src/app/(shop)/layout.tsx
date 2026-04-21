@@ -24,7 +24,7 @@ export default async function ShopLayout({
 
   return (
     <>
-      <Header initialUser={user} initialRole={role} />
+      <Header initialUser={user} initialRole={role} key={user?.id || 'guest'} />
       {children}
       <Footer settings={settings} />
     </>

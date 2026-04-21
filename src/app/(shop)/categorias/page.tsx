@@ -4,14 +4,14 @@ import { getCategories } from "@/lib/supabase-data";
 import { 
   Laptop, 
   Shirt, 
-  Home, 
+  HomeIcon as Home, 
   Dumbbell, 
   BookOpen, 
   LayoutGrid,
   ShoppingBag,
   Zap,
   ArrowRight
-} from "lucide-react";
+} from "@/components/Icons";
 
 // Mapeo dinámico de iconos basado en el slug
 const ICON_MAP: Record<string, any> = {

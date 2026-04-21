@@ -95,7 +95,7 @@
   background-color: var(--surface);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-md);
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 .table {
@@ -173,8 +173,14 @@
   margin-right: 0.5rem;
 }
 
-.active { background-color: #10b981; box-shadow: 0 0 8px #10b981; }
-.inactive { background-color: #ef4444; }
+.active {
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.inactive {
+  background-color: #ef4444;
+}
 
 .actions {
   display: flex;
@@ -215,6 +221,11 @@
 }
 
 @keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

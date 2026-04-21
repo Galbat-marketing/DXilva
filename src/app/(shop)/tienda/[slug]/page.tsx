@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/supabase-data";
 import AddToCartBtn from "@/components/AddToCartBtn";
 import styles from "./page.module.css";
-import { ArrowLeft, CheckCircle, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CheckCircle, ShieldCheck } from "@/components/Icons";
 
 export const dynamic = "force-dynamic";
 

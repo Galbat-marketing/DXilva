@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { ArrowRight, ShoppingBag, Percent } from "lucide-react";
+import { ArrowRight, ShoppingBag, Percent } from "@/components/Icons";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 

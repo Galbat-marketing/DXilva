@@ -6,6 +6,7 @@
   font-family: var(--font-montserrat);
 }
 
+/* Sidebar Styles */
 .sidebar {
   width: 280px;
   background-color: var(--background);
@@ -15,12 +16,24 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  z-index: 100;
+  z-index: 1001;
+  transition: transform 0.3s ease;
 }
 
 .logoWrapper {
   padding: 2rem;
   border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--dx-light-gray);
+  cursor: pointer;
 }
 
 .logoText {
@@ -54,20 +67,25 @@
   font-size: 0.95rem;
 }
 
-.navLink:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--foreground);
+.activeLink {
+  background-color: rgba(247, 187, 60, 0.1);
+  color: var(--primary);
 }
 
-.navLink:hover .chevron {
-  opacity: 1;
-  transform: translateX(3px);
+.navLink:hover:not(.activeLink) {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--foreground);
 }
 
 .chevron {
   margin-left: auto;
   opacity: 0;
   transition: all 0.2s ease;
+}
+
+.navLink:hover .chevron {
+  opacity: 1;
+  transform: translateX(3px);
 }
 
 .newBadge {
@@ -81,7 +99,7 @@
   margin-right: 0.5rem;
 }
 
-.footer {
+.sidebarFooter {
   padding: 1rem;
   border-top: 1px solid var(--glass-border);
 }
@@ -111,6 +129,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .topBar {
@@ -123,6 +142,21 @@
   padding: 0 2rem;
 }
 
+.topLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
 .breadcrumb {
   font-size: 0.9rem;
   color: var(--dx-light-gray);
@@ -131,8 +165,13 @@
 .userSection {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
   gap: 1rem;
-  font-size: 0.9rem;
 }
 
 .avatar {
@@ -150,4 +189,54 @@
 .innerContent {
   padding: 2rem;
   flex: 1;
+  overflow-x: hidden;
+}
+
+/* Responsive Stuff */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .overlayOpen {
+    display: block;
+  }
+
+  .closeBtn {
+    display: block;
+  }
+
+  .menuBtn {
+    display: block;
+  }
+
+  .topBar {
+    padding: 0 1rem;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .innerContent {
+    padding: 1.5rem 1rem;
+  }
 }
