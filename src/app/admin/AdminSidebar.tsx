@@ -2,16 +2,17 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { 
-  LayoutDashboard, 
-  Package, 
-  ListOrdered, 
-  Tag, 
-  Users, 
-  Settings, 
+import {
+  LayoutDashboard,
+  Package,
+  ListOrdered,
+  Tag,
+  Users,
+  Settings,
   LogOut,
   ChevronRight,
-  X
+  X,
+  Percent
 } from "lucide-react";
 import styles from "./layout.module.css";
 
@@ -82,8 +83,8 @@ export default function AdminSidebar({ pendingCount, isOpen, onClose, signoutAct
             <ChevronRight size={14} className={styles.chevron} />
           </Link>
           
-          <Link 
-            href="/admin/categorias" 
+          <Link
+            href="/admin/categorias"
             className={`${styles.navLink} ${isActive("/admin/categorias") ? styles.activeLink : ""}`}
             onClick={onClose}
           >
@@ -91,9 +92,19 @@ export default function AdminSidebar({ pendingCount, isOpen, onClose, signoutAct
             <span>Categorías</span>
             <ChevronRight size={14} className={styles.chevron} />
           </Link>
-          
-          <Link 
-            href="/admin/clientes" 
+
+          <Link
+            href="/admin/descuentos"
+            className={`${styles.navLink} ${isActive("/admin/descuentos") ? styles.activeLink : ""}`}
+            onClick={onClose}
+          >
+            <Percent size={20} />
+            <span>Descuentos</span>
+            <ChevronRight size={14} className={styles.chevron} />
+          </Link>
+
+          <Link
+            href="/admin/clientes"
             className={`${styles.navLink} ${isActive("/admin/clientes") ? styles.activeLink : ""}`}
             onClick={onClose}
           >

@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Header({ initialUser, initialRole }: { initialUser?: any, initialRole?: string | null }) {
-  const { itemCount } = useCart();
+  const { itemCount, clearCart } = useCart();
   const [user, setUser] = useState<any>(initialUser ?? null);
   const [role, setRole] = useState<string | null>(initialRole ?? null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,12 +42,19 @@ export default function Header({ initialUser, initialRole }: { initialUser?: any
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       const currentUser = session?.user ?? null;
+      const previousUser = user;
+
       setUser(currentUser);
-      
+
       if (currentUser) {
         fetchProfile(currentUser.id);
       } else {
         setRole(null);
+        // Clear cart when user logs out
+        if (previousUser) {
+          console.log("User logged out from Header, clearing cart");
+          clearCart();
+        }
       }
 
       // Sync server-side layout state when auth changes

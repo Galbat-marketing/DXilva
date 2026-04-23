@@ -1,0 +1,152 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header p {
+  color: var(--dx-light-gray);
+  margin: 0.5rem 0 0 0;
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--dx-gold);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.addBtn:hover {
+  background: var(--dx-dark-gold);
+}
+
+.tableWrapper {
+  background-color: var(--surface);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-md);
+    overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 1.25rem 1rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--dx-light-gray);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.table td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+}
+
+.codeCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.code {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  background: var(--dx-light-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.percentage {
+  background: var(--dx-green);
+  color: white;
+}
+
+.fixed {
+  background: var(--dx-blue);
+  color: white;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.active {
+  background: var(--dx-green);
+}
+
+.inactive {
+  background: var(--dx-red);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: white;
+  color: var(--dx-gray);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  background: var(--dx-light-bg);
+  border-color: var(--dx-gold);
+  color: var(--dx-gold);
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--dx-light-gray);
+  font-style: italic;
+}

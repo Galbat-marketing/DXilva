@@ -25,17 +25,12 @@ export async function getProducts(categorySlug?: string) {
 
 export async function getProductBySlug(slug: string) {
   const supabase = await createClient();
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("products")
     .select("*")
     .eq("slug", slug)
     .eq("is_active", true)
-    .single();
-
-  if (error) {
-    console.error(`Error fetching product with slug ${slug}:`, error);
-    return null;
-  }
+    .maybeSingle();
 
   return data as Product;
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
 import { createInvoice } from "@/lib/qvapay";
+import { checkoutSchema } from "@/lib/validations";
 
 interface CheckoutItem {
   name: string;
@@ -12,6 +13,10 @@ interface CheckoutItem {
 interface CheckoutBody {
   items: CheckoutItem[];
   total: number;
+  discount?: {
+    code: string;
+    discount_amount: number;
+  } | null;
   customerInfo: {
     email: string;
     phone: string;
@@ -25,25 +30,46 @@ interface CheckoutBody {
 
 export async function POST(request: Request) {
   try {
-    const body: CheckoutBody = await request.json();
-    const { items, total, customerInfo } = body;
+    const body = await request.json();
 
-    if (!items || items.length === 0) {
+    // Validate request body
+    const validationResult = checkoutSchema.safeParse(body);
+    if (!validationResult.success) {
       return NextResponse.json(
-        { error: "El carrito está vacío" },
+        { error: "Datos inválidos", details: validationResult.error.issues },
         { status: 400 }
       );
     }
 
-    if (total <= 0) {
-      return NextResponse.json(
-        { error: "El total debe ser mayor a 0" },
-        { status: 400 }
-      );
-    }
+    const { items, total, discount, customerInfo } = validationResult.data;
 
-    // 1. Create the order in Supabase
+    // 1. Validate stock availability
     const supabase = await createClient();
+
+    // Check stock for each item
+    for (const item of items) {
+      const { data: product, error: stockError } = await supabase
+        .from("products")
+        .select("stock_quantity")
+        .eq("id", item.product_id)
+        .single();
+
+      if (stockError || !product) {
+        return NextResponse.json(
+          { error: `Producto no encontrado: ${item.name}` },
+          { status: 400 }
+        );
+      }
+
+      if (product.stock_quantity < item.quantity) {
+        return NextResponse.json(
+          {
+            error: `Stock insuficiente para ${item.name}. Disponible: ${product.stock_quantity}, solicitado: ${item.quantity}`
+          },
+          { status: 400 }
+        );
+      }
+    }
 
     const { data: order, error: orderError } = await supabase
       .from("orders")
@@ -57,7 +83,9 @@ export async function POST(request: Request) {
           city: customerInfo.city,
           province: customerInfo.province,
         }),
-        subtotal: total,
+        subtotal: items.reduce((acc, item) => acc + item.price * item.quantity, 0),
+        discount_code: discount?.code || null,
+        discount_amount: discount?.discount_amount || 0,
         total: total,
         status: "pending",
         payment_method: "qvapay",
@@ -96,6 +124,17 @@ export async function POST(request: Request) {
         { error: "Error al guardar los productos: " + itemsError.message },
         { status: 500 }
       );
+    }
+
+    // 2.5. Increment discount usage count if discount was applied
+    if (discount?.code) {
+      await supabase
+        .from("discount_codes")
+        .update({
+          usage_count: supabase.raw("usage_count + 1"),
+          updated_at: new Date().toISOString(),
+        })
+        .eq("code", discount.code);
     }
 
     // 3. Create invoice in QvaPay

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import { loginSchema, signupSchema } from "@/lib/validations";
 
 export async function login(formData: FormData) {
   const supabase = await createClient();
@@ -11,6 +12,12 @@ export async function login(formData: FormData) {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
+
+  // Validate input data
+  const validationResult = loginSchema.safeParse(data);
+  if (!validationResult.success) {
+    redirect(`/login?error=${encodeURIComponent("Datos inválidos")}`);
+  }
 
   const { error } = await supabase.auth.signInWithPassword(data);
 
@@ -25,12 +32,24 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = await createClient();
 
-  const data = {
+  const validationData = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
+    full_name: formData.get("full_name") as string,
+  };
+
+  // Validate input data
+  const validationResult = signupSchema.safeParse(validationData);
+  if (!validationResult.success) {
+    redirect(`/login?error=${encodeURIComponent("Datos inválidos")}&type=register`);
+  }
+
+  const data = {
+    email: validationData.email,
+    password: validationData.password,
     options: {
       data: {
-        full_name: formData.get("full_name") as string,
+        full_name: validationData.full_name,
       }
     }
   };

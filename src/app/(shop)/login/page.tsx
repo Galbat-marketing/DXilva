@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { login, signup } from "./actions";
 import Link from "next/link";
+import LoginCartCleaner from "@/components/LoginCartCleaner";
 
 export default async function LoginPage({
   searchParams,
@@ -14,6 +15,7 @@ export default async function LoginPage({
 
   return (
     <div className={styles.container}>
+      <LoginCartCleaner />
       <div className={styles.authCard}>
         <h1 className={styles.title}>
           Bienvenido a <span className={styles.goldText}>D'XILVA</span>

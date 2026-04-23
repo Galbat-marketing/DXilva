@@ -17,7 +17,11 @@ export default function AddToCartBtn({ product, showQuantity = false, className 
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
 
+  const maxQuantity = product.stock_quantity;
+  const isOutOfStock = maxQuantity <= 0;
+
   const handleAdd = () => {
+    if (isOutOfStock) return;
     addToCart(product, quantity);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000);
@@ -25,13 +29,13 @@ export default function AddToCartBtn({ product, showQuantity = false, className 
 
   if (!showQuantity) {
     return (
-      <button 
+      <button
         className={`${styles.simpleBtn} ${isAdded ? styles.added : ""} ${className}`}
         onClick={handleAdd}
-        disabled={isAdded}
+        disabled={isAdded || isOutOfStock}
       >
         <ShoppingCart size={18} />
-        <span>{isAdded ? "¡Añadido!" : "Añadir"}</span>
+        <span>{isOutOfStock ? "Sin Stock" : isAdded ? "¡Añadido!" : "Añadir"}</span>
       </button>
     );
   }
@@ -39,18 +43,18 @@ export default function AddToCartBtn({ product, showQuantity = false, className 
   return (
     <div className={styles.fullControl}>
       <div className={styles.quantityControl}>
-        <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>-</button>
+        <button onClick={() => setQuantity(q => Math.max(1, q - 1))} disabled={isOutOfStock}>-</button>
         <span>{quantity}</span>
-        <button onClick={() => setQuantity(q => q + 1)}>+</button>
+        <button onClick={() => setQuantity(q => q + 1)} disabled={quantity >= maxQuantity}>+</button>
       </div>
-      
-      <button 
+
+      <button
         className={`${styles.bigBtn} ${isAdded ? styles.addedBig : ""} ${className}`}
         onClick={handleAdd}
-        disabled={isAdded}
+        disabled={isAdded || isOutOfStock}
       >
         <ShoppingBag size={20} />
-        {isAdded ? "¡Agregado al Carrito!" : "Añadir al Carrito"}
+        {isOutOfStock ? "Sin Stock" : isAdded ? "¡Agregado al Carrito!" : "Añadir al Carrito"}
       </button>
     </div>
   );

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 import { getProducts } from "@/lib/supabase-data";
 import AddToCartBtn from "@/components/AddToCartBtn";
 import styles from "./page.module.css";
@@ -8,6 +10,15 @@ export const dynamic = "force-dynamic";
 export default async function TiendaPage(props: { searchParams: Promise<{ categoria?: string }> }) {
   const searchParams = await props.searchParams;
   const categorySlug = searchParams.categoria;
+
+  // Verificar autenticación
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/login?message=Debes+iniciar+sesión+para+ver+nuestros+productos");
+  }
+
   const products = await getProducts(categorySlug);
 
   return (

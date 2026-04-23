@@ -146,3 +146,16 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(247, 187, 60, 0.4);
 }
+
+/* Validation error styles */
+.inputError {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 1px #ef4444 !important;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}

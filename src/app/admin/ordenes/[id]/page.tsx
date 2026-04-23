@@ -12,13 +12,13 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ i
   const resolvedParams = await params;
 
   // Fetch the order and its items
-  const { data: order, error: orderError } = await supabase
+  const { data: order } = await supabase
     .from("orders")
     .select("*, order_items(*)")
     .eq("id", resolvedParams.id)
-    .single();
+    .maybeSingle();
 
-  if (orderError || !order) {
+  if (!order) {
     return notFound();
   }
 

@@ -14,13 +14,13 @@ export default async function EditProductPage({
   const supabase = await createClient();
 
   // 1. Fetch the product data
-  const { data: product, error: productError } = await supabase
+  const { data: product } = await supabase
     .from("products")
     .select("*")
     .eq("id", id)
-    .single();
+    .maybeSingle();
 
-  if (productError || !product) {
+  if (!product) {
     return notFound();
   }
 

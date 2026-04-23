@@ -16,6 +16,7 @@ export interface Product {
   thumbnail_url: string;
   is_active: boolean;
   category_id?: string;
+  stock_quantity: number;
 }
 
 export interface CartItem {
@@ -29,4 +30,28 @@ export interface CartState {
   items: CartItem[];
   itemCount: number;
   total: number;
+}
+
+export interface DiscountCode {
+  id: string;
+  code: string;
+  description: string;
+  discount_type: 'percentage' | 'fixed';
+  discount_value: number;
+  minimum_amount?: number;
+  usage_limit?: number;
+  usage_count: number;
+  is_active: boolean;
+  expires_at?: string;
+  created_at: string;
+}
+
+export interface AppliedDiscount {
+  code: DiscountCode;
+  discount_amount: number;
+}
+
+export interface CartStateWithDiscount extends CartState {
+  discount?: AppliedDiscount;
+  discountedTotal: number;
 }

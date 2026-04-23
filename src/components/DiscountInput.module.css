@@ -1,0 +1,110 @@
+.container {
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.icon {
+  color: var(--dx-light-gray);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  background-color: var(--surface);
+  border: 1px solid var(--glass-border);
+  padding: 1rem;
+  color: var(--foreground);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.input:disabled {
+  background: var(--dx-light-gray);
+  cursor: not-allowed;
+}
+
+.applyBtn {
+  padding: 0.75rem 1.5rem;
+  background: var(--dx-gold);
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-montserrat);
+  font-size: 0.9rem;
+}
+
+.applyBtn:hover:not(:disabled) {
+  background: var(--dx-dark-gold);
+}
+
+.applyBtn:disabled {
+  background: var(--dx-gray);
+  cursor: not-allowed;
+}
+
+.removeBtn {
+  padding: 0.75rem;
+  background: var(--dx-red);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-montserrat);
+  font-size: 0.9rem;
+}
+
+.removeBtn:hover {
+  background: var(--dx-dark-red);
+}
+
+.error {
+  color: var(--dx-red);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success {
+  color: var(--dx-green);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(34, 197, 94, 0.1);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.success strong {
+  color: var(--dx-green);
+}

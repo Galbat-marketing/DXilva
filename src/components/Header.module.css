@@ -17,10 +17,26 @@
   max-width: var(--max-width);
   width: 100%;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 var(--space-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .header {
+    height: 70px;
+  }
 }
 
 .logo {
@@ -32,6 +48,12 @@
   height: 50px;
   width: auto;
   object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .logoImage {
+    height: 40px;
+  }
 }
 
 .visuallyHidden {
@@ -164,8 +186,16 @@
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: var(--space-xl);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 480px) {
+  .mobileMenu {
+    width: 100%;
+    max-width: none;
+    padding: var(--space-lg);
+  }
 }
 
 .menuOpen {

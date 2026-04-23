@@ -12,13 +12,35 @@
 
 .header h1 {
   font-family: var(--font-cinzel);
-  font-size: 1.8rem;
-  margin-bottom: 0.3rem;
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-xs);
 }
 
 .header p {
   color: var(--dx-light-gray);
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .header h1 {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: var(--text-xl);
+  }
+
+  .header p {
+    font-size: var(--text-xs);
+  }
 }
 
 .addBtn {
@@ -42,14 +64,25 @@
 .controls {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-md);
   flex-wrap: wrap;
 }
 
 .searchWrapper {
   position: relative;
   flex: 1;
-  min-width: 300px;
+  min-width: 250px;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .searchWrapper {
+    min-width: auto;
+  }
 }
 
 .searchIcon {
@@ -96,6 +129,15 @@
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-md);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .tableWrapper {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 }
 
 .table {
@@ -105,20 +147,35 @@
 
 .table th {
   text-align: left;
-  padding: 1.25rem 1rem;
+  padding: var(--space-lg) var(--space-md);
   background-color: rgba(255, 255, 255, 0.02);
   color: var(--dx-light-gray);
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 1px;
   border-bottom: 1px solid var(--glass-border);
+  white-space: nowrap;
 }
 
 .table td {
-  padding: 1.25rem 1rem;
+  padding: var(--space-lg) var(--space-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: var(--space-md) var(--space-sm);
+    font-size: var(--text-xs);
+  }
+
+  .table th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
 }
 
 .productCell {

@@ -1,31 +1,84 @@
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 8rem 5% 4rem;
+  padding: 8rem var(--space-lg) var(--space-3xl);
   min-height: 80vh;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--space-3xl);
 }
 
 .title {
   font-family: var(--font-cinzel);
-  font-size: 3rem;
+  font-size: var(--text-5xl);
   color: var(--primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-sm);
 }
 
 .subtitle {
   color: var(--dx-light-gray);
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: var(--space-xl);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 7rem var(--space-md) var(--space-2xl);
+  }
+
+  .header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .title {
+    font-size: var(--text-4xl);
+  }
+
+  .subtitle {
+    font-size: var(--text-base);
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 6rem var(--space-sm) var(--space-xl);
+  }
+
+  .header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .title {
+    font-size: var(--text-3xl);
+  }
+
+  .subtitle {
+    font-size: var(--text-sm);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
 }
 
 .card {
@@ -65,15 +118,15 @@
 }
 
 .cardBody {
-  padding: 1.5rem;
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
 .productName {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-sm);
   transition: color 0.2s ease;
 }
 
@@ -83,10 +136,29 @@
 
 .shortDescription {
   color: var(--dx-light-gray);
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   line-height: 1.4;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-lg);
   flex: 1;
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .cardBody {
+    padding: var(--space-md);
+  }
+
+  .productName {
+    font-size: var(--text-lg);
+  }
+
+  .shortDescription {
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-md);
+  }
 }
 
 .priceRow {

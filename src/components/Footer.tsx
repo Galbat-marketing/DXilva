@@ -32,6 +32,8 @@ export default function Footer({ settings }: Props) {
   const phone = settings?.contact_phone || "+53 5555-5555";
   const description = settings?.meta_description || "Impulsando la transformación digital del comercio, conectando mercados locales e internacionales de manera eficiente y segura.";
 
+  //console.log("Footer - Using values:", { storeName, email, phone, description });
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
