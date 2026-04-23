@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Header.module.css";
 import { Menu, Search, User, ShoppingBag, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -74,13 +75,23 @@ export default function Header({ initialUser, initialRole }: { initialUser?: any
         <div className={styles.logo}>
           <Link href="/">
             {/* Logo para Modo Oscuro (Dorado/Blanco) */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-dark.png" alt="D'XILVA Logo" className={`${styles.logoImage} ${styles.logoDark}`} />
-            
+            <Image
+              src="/logo-dark.png"
+              alt="D'XILVA Logo"
+              width={150}
+              height={50}
+              className={`${styles.logoImage} ${styles.logoDark}`}
+            />
+
             {/* Logo para Modo Claro (Negro/Color) */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-light.png" alt="D'XILVA Logo" className={`${styles.logoImage} ${styles.logoLight}`} />
-            
+            <Image
+              src="/logo-light.png"
+              alt="D'XILVA Logo"
+              width={150}
+              height={50}
+              className={`${styles.logoImage} ${styles.logoLight}`}
+            />
+
             <span className={styles.visuallyHidden}>D'XILVA</span>
           </Link>
         </div>

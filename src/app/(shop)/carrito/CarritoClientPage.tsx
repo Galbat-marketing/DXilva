@@ -2,6 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
+import Image from "next/image";
 import DiscountInput from "@/components/DiscountInput";
 import styles from "./page.module.css";
 import { Trash2, ArrowRight, ShoppingBag } from "lucide-react";
@@ -32,8 +33,13 @@ export default function CarritoClientPage() {
           {items.map((item) => (
             <div key={item.id} className={styles.cartItem}>
               <div className={styles.itemImageWrapper}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.product.thumbnail_url || "/placeholder.png"} alt={item.product.name} className={styles.itemImage} />
+                <Image
+                  src={item.product.thumbnail_url || "/placeholder.png"}
+                  alt={item.product.name}
+                  width={80}
+                  height={80}
+                  className={styles.itemImage}
+                />
               </div>
 
               <div className={styles.itemDetails}>

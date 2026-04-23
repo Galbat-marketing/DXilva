@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { getProducts } from "@/lib/supabase-data";
@@ -44,11 +45,12 @@ export default async function TiendaPage(props: { searchParams: Promise<{ catego
           {products.map((product) => (
             <div key={product.id} className={styles.card}>
               <Link href={`/tienda/${product.slug}`} className={styles.imageWrapper}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={product.thumbnail_url} 
-                  alt={product.name} 
-                  className={styles.image} 
+                <Image
+                  src={product.thumbnail_url}
+                  alt={product.name}
+                  width={280}
+                  height={250}
+                  className={styles.image}
                 />
               </Link>
               

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./page.module.css";
 import { Plus, Search, Edit, ExternalLink } from "lucide-react";
 import DeleteProductBtn from "./DeleteProductBtn";
@@ -63,8 +64,12 @@ export default async function AdminProductsPage() {
                 <tr key={product.id}>
                   <td className={styles.productCell}>
                     <div className={styles.thumbnail}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={product.thumbnail_url || "/placeholder.png"} alt={product.name} />
+                      <Image
+                        src={product.thumbnail_url || "/placeholder.png"}
+                        alt={product.name}
+                        width={48}
+                        height={48}
+                      />
                     </div>
                     <div className={styles.productInfo}>
                       <span className={styles.productName}>{product.name}</span>

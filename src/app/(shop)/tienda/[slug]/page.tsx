@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/supabase-data";
 import AddToCartBtn from "@/components/AddToCartBtn";
@@ -25,8 +26,13 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
         {/* Gallery */}
         <div className={styles.gallery}>
           <div className={styles.mainImageWrapper}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={product.thumbnail_url} alt={product.name} className={styles.mainImage} />
+            <Image
+              src={product.thumbnail_url}
+              alt={product.name}
+              width={500}
+              height={500}
+              className={styles.mainImage}
+            />
           </div>
         </div>
 
