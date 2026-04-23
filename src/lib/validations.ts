@@ -25,9 +25,7 @@ export const discountSchema = z.object({
     .max(50, "El código es demasiado largo")
     .regex(/^[A-Z0-9]+$/, "El código solo puede contener letras mayúsculas y números"),
   description: z.string().min(1, "La descripción es requerida").max(500, "La descripción es demasiado larga"),
-  discount_type: z.enum(["percentage", "fixed"], {
-    errorMap: () => ({ message: "Tipo de descuento inválido" })
-  }),
+  discount_type: z.enum(["percentage", "fixed"]),
   discount_value: z.number().min(0.01, "El valor del descuento debe ser mayor a 0"),
   minimum_amount: z.number().min(0).optional(),
   usage_limit: z.number().int().min(1).optional(),

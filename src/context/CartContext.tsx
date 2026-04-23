@@ -26,6 +26,8 @@ const CartContext = createContext<CartContextProps>({
   removeFromCart: () => {},
   updateQuantity: () => {},
   clearCart: () => {},
+  applyDiscount: () => {},
+  removeDiscount: () => {},
 });
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -63,6 +65,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const checkAuthState = async () => {
       try {
         const supabase = createBrowserClient();
+        if (!supabase) {
+          console.error("Supabase client not available");
+          return;
+        }
+
         const { data: { session } } = await supabase.auth.getSession();
         const currentUserId = session?.user?.id || null;
         setPreviousUserId(currentUserId);

@@ -128,13 +128,31 @@ export async function POST(request: Request) {
 
     // 2.5. Increment discount usage count if discount was applied
     if (discount?.code) {
-      await supabase
+      // First get the current usage count
+      const { data: discountData, error: fetchError } = await supabase
         .from("discount_codes")
-        .update({
-          usage_count: supabase.raw("usage_count + 1"),
-          updated_at: new Date().toISOString(),
-        })
-        .eq("code", discount.code);
+        .select("usage_count")
+        .eq("code", discount.code)
+        .single();
+
+      if (fetchError) {
+        console.error("Error fetching discount for update:", fetchError);
+      } else if (discountData) {
+        // Increment the usage count
+        const newUsageCount = (discountData.usage_count || 0) + 1;
+
+        const { error: updateError } = await supabase
+          .from("discount_codes")
+          .update({
+            usage_count: newUsageCount,
+            updated_at: new Date().toISOString(),
+          })
+          .eq("code", discount.code);
+
+        if (updateError) {
+          console.error("Error updating discount usage count:", updateError);
+        }
+      }
     }
 
     // 3. Create invoice in QvaPay

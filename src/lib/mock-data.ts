@@ -12,6 +12,7 @@ export const MOCK_PRODUCTS: Product[] = [
     currency: "USD",
     thumbnail_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
     is_active: true,
+    stock_quantity: 15,
   },
   {
     id: "2",
@@ -23,6 +24,7 @@ export const MOCK_PRODUCTS: Product[] = [
     currency: "USD",
     thumbnail_url: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80",
     is_active: true,
+    stock_quantity: 8,
   },
   {
     id: "3",
@@ -35,6 +37,7 @@ export const MOCK_PRODUCTS: Product[] = [
     currency: "USD",
     thumbnail_url: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80",
     is_active: true,
+    stock_quantity: 25,
   },
   {
     id: "4",
@@ -46,6 +49,7 @@ export const MOCK_PRODUCTS: Product[] = [
     currency: "USD",
     thumbnail_url: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&q=80",
     is_active: true,
+    stock_quantity: 12,
   }
 ];
 
