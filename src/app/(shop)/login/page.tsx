@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import { login, signup } from "./actions";
 import Link from "next/link";
 import LoginCartCleaner from "@/components/LoginCartCleaner";
+import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export default async function LoginPage({
   searchParams,
@@ -55,6 +56,13 @@ export default async function LoginPage({
             {isRegister ? "Crear Cuenta" : "Entrar"}
           </button>
         </form>
+         <div className="my-4 flex items-center gap-3">
+          <hr className="flex-1 border-gray-200" />
+          <span className="text-xs text-gray-400">o continúa con</span>
+          <hr className="flex-1 border-gray-200" />
+        </div>
+
+         {/* <GoogleSignInButton /> */}
 
         <div className={styles.toggleText}>
           {isRegister ? (

@@ -1,16 +1,17 @@
 .container {
+  background-color: var(--surface);
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  background: var(--background);
 }
 
 .authCard {
   width: 100%;
   max-width: 480px;
-  background: rgba(15, 15, 15, 0.8);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   padding: 3rem;
@@ -69,7 +70,7 @@
 
 .input {
   width: 100%;
-  background-color: #111;
+  background-color: var(--surface);
   border: 1px solid var(--glass-border);
   padding: 0.9rem 1rem;
   padding-left: 3rem;
@@ -161,6 +162,23 @@
 }
 
 .footer a:hover {
+  text-decoration: underline;
+}
+
+.toggleText {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--dx-light-gray);
+}
+
+.toggleText a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.toggleText a:hover {
   text-decoration: underline;
 }
 
